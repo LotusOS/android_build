@@ -317,8 +317,8 @@ include $(BUILD_SYSTEM)/envsetup.mk
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 -include vendor/extra/BoardConfigExtra.mk
-ifneq ($(CHERISH_BUILD),)
-include vendor/cherish/config/BoardConfig.mk
+ifneq ($(LOTUS_BUILD),)
+include vendor/lotus/config/BoardConfig.mk
 endif
 
 # The build system exposes several variables for where to find the kernel
@@ -1159,11 +1159,11 @@ endif
 dont_bother_goals := out \
     product-graph dump-products
 
-ifneq ($(CHERISH_BUILD),)
-ifneq ($(wildcard device/cherish/sepolicy/common/sepolicy.mk),)
+ifneq ($(LOTUS_BUILD),)
+ifneq ($(wildcard device/lotus/sepolicy/common/sepolicy.mk),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
-$(eval include device/cherish/sepolicy/common/sepolicy.mk)
+$(eval include device/lotus/sepolicy/common/sepolicy.mk)
 endif
 endif
 
